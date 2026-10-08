@@ -1,0 +1,15 @@
+server:
+  port: 8070
+spring:
+  ai:
+    mcp:
+      server:
+        name: nbb-mcp-server
+        ## 对外暴露的协议类型，默认是sse（org.springframework.ai.mcp.server.common.autoconfigure.McpServerAutoConfiguration.NonStatelessServerCondition.SseEnabledCondition）
+        protocol: streamable
+        ## streamable-http 配置
+#        streamable-http:
+#          mcp-endpoint: /mcp
+        ## sse 配置
+#        sse-endpoint: /sse
+#        sse-message-endpoint: /mcp/message

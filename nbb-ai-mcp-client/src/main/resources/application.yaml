@@ -1,0 +1,39 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: nbb-mcp-client
+  servlet:
+    encoding:
+      force: true # 强制设置 UTF-8，避免 WebFlux 流式返回（AI 场景）会乱码问题
+      charset: UTF-8
+  ai:
+    mcp:
+      client:
+        initialized: false # true：启动时立即建立 MCP Server 连接。若此时 MCP Server 不可用，项目启动会直接抛出异常终止。false：采用延迟初始化。项目启动阶段不会建立 MCP Server 连接，等到首次发起实际调用时才创建连接；
+        # 流式 HTTP 连接的mcp服务器列表
+        streamable-http:
+          connections:
+            mcp-server-1:
+              url: http://127.0.0.1:8070
+              endpoint: /mcp
+#            mcp-server-2:
+#              url: http://127.0.0.1:8060
+#              endpoint: /mcp
+        # SSE 连接的mcp服务器列表
+#        sse:
+#          connections:
+#            nbb-mcp-server:
+#              url: http://127.0.0.1:8060
+#              sse-endpoint: /sse
+    deepseek:
+      api-key: sk-489da50b45514871877ad475253b7852
+      chat:
+        model: deepseek-chat
+        temperature: 0.7
+
+
+logging:
+  level:
+    root: info
