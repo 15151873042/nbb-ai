@@ -31,9 +31,10 @@ spring:
       api-key: sk-489da50b45514871877ad475253b7852
       chat:
         model: deepseek-chat
-        temperature: 0.7
+#        temperature: 0.7
 
 
 logging:
   level:
     root: info
+    org.springframework.ai.chat.client.advisor: debug

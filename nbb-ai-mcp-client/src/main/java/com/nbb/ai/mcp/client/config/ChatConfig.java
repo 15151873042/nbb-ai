@@ -1,6 +1,7 @@
 package com.nbb.ai.mcp.client.config;
 
 import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.ai.chat.client.advisor.SimpleLoggerAdvisor;
 import org.springframework.ai.tool.ToolCallbackProvider;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,6 +20,7 @@ public class ChatConfig {
         // 本地定义的工具为MethodToolCallbackProvider
         return chatClientBuilder
                 .defaultTools(toolCallbackProviders)
+                .defaultAdvisors(new SimpleLoggerAdvisor())
                 .build();
     }
 }
